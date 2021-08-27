@@ -1,0 +1,21 @@
+* {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+h1 {
+    font-size: 4.5rem;
+}
+
+
+h2 {
+    font-size: 3rem;
+}
+
+@mixin placeholderFont{
+    font-size: 2.25rem;
+    color: $black;
+    text-align: center;
+    position: relative;
+   
+}
+
