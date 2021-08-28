@@ -63,8 +63,11 @@ h2 {
           width: 500px; } }
     .landingBody .content ul {
       margin-top: 80px;
-      width: 50vw;
+      width: 80vw;
       height: 90%; }
+      @media (min-width: 426px) {
+        .landingBody .content ul {
+          width: 50vw; } }
       .landingBody .content ul li {
         line-height: 30px;
         display: flex;

@@ -48,7 +48,9 @@
     
         ul{
             margin-top:80px;
-            width: 50vw;
+            width: 80vw;
+            @media (min-width:426px) {
+            width: 50vw;}
             height:90%;
             li{
                 line-height: 30px;
