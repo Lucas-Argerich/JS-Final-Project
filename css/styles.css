@@ -1,15 +1,22 @@
 * {
   padding: 0;
-  margin: 0; }
+  margin: 0;
+  list-style: none; }
 
 * {
   font-family: 'Ubuntu', sans-serif; }
 
 h1 {
-  font-size: 4.5rem; }
+  font-size: 3.5rem; }
+  @media (min-width: 426px) {
+    h1 {
+      font-size: 4.5rem; } }
 
 h2 {
-  font-size: 3rem; }
+  font-size: 2.5rem; }
+  @media (min-width: 426px) {
+    h2 {
+      font-size: 3rem; } }
 
 .landingBody {
   background-color: #14213D;
@@ -33,7 +40,7 @@ h2 {
       color: #ffffff;
       text-align: center; }
     .landingBody .content input {
-      max-width: 500px;
+      width: 350px;
       margin: 0 20px;
       height: 60px;
       border-radius: 10px;
@@ -51,3 +58,37 @@ h2 {
         outline: none; }
         .landingBody .content input:focus::placeholder {
           color: #00000000; }
+      @media (min-width: 426px) {
+        .landingBody .content input {
+          width: 500px; } }
+    .landingBody .content ul {
+      margin-top: 80px;
+      width: 50vw;
+      height: 90%; }
+      .landingBody .content ul li {
+        line-height: 30px;
+        display: flex;
+        justify-content: space-between; }
+        .landingBody .content ul li h3 {
+          color: #FCA311;
+          font-weight: 400;
+          font-size: 0.8rem;
+          display: inline-block; }
+          @media (min-width: 426px) {
+            .landingBody .content ul li h3 {
+              font-size: 1.125rem; } }
+        .landingBody .content ul li span {
+          color: #ffffff;
+          font-weight: 400;
+          font-size: 0.8rem; }
+          @media (min-width: 426px) {
+            .landingBody .content ul li span {
+              font-size: 1.125rem; } }
+  .landingBody::-webkit-scrollbar {
+    width: 10px; }
+    .landingBody::-webkit-scrollbar-thumb {
+      width: 1px;
+      background-color: #ffffff;
+      border-radius: 2px;
+      border: 3px solid transparent;
+      background-clip: content-box; }
