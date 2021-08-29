@@ -87,6 +87,15 @@ body::-webkit-scrollbar {
           display: flex;
           justify-content: space-between;
           text-decoration: none; }
+          .landingBody .content ul li a:hover > .title {
+            font-size: 0.9rem; }
+          .landingBody .content ul li a:hover > .date {
+            font-size: 0.9rem; }
+          @media (min-width: 426px) {
+            .landingBody .content ul li a:hover > .title {
+              font-size: 1.2rem; }
+            .landingBody .content ul li a:hover > .date {
+              font-size: 1.2rem; } }
           .landingBody .content ul li a h2.title {
             color: #FCA311;
             font-weight: 400;
