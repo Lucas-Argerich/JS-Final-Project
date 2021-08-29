@@ -18,10 +18,13 @@ h2 {
     h2 {
       font-size: 3rem; } }
 
+html {
+  overflow-y: scroll; }
+
 body::-webkit-scrollbar {
   width: 10px; }
   body::-webkit-scrollbar-thumb {
-    width: 1px;
+    position: fixed;
     background-color: #ffffff;
     border-radius: 2px;
     border: 3px solid transparent;
@@ -44,13 +47,13 @@ body::-webkit-scrollbar {
     flex-direction: column;
     justify-content: space-around;
     align-items: center; }
-    .landingBody .content h2 {
+    .landingBody .content .name {
       justify-self: flex-start;
       color: #ffffff;
       text-align: center; }
     .landingBody .content input {
       width: 350px;
-      margin: 0 20px;
+      margin-bottom: 50px;
       height: 60px;
       border-radius: 10px;
       text-align: center;
@@ -78,21 +81,24 @@ body::-webkit-scrollbar {
         .landingBody .content ul {
           width: 50vw; } }
       .landingBody .content ul li {
-        line-height: 30px;
-        display: flex;
-        justify-content: space-between; }
-        .landingBody .content ul li h3 {
-          color: #FCA311;
-          font-weight: 400;
-          font-size: 0.8rem;
-          display: inline-block; }
-          @media (min-width: 426px) {
-            .landingBody .content ul li h3 {
-              font-size: 1.125rem; } }
-        .landingBody .content ul li span {
-          color: #ffffff;
-          font-weight: 400;
-          font-size: 0.8rem; }
-          @media (min-width: 426px) {
-            .landingBody .content ul li span {
-              font-size: 1.125rem; } }
+        line-height: 30px; }
+        .landingBody .content ul li a {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          text-decoration: none; }
+          .landingBody .content ul li a h2.title {
+            color: #FCA311;
+            font-weight: 400;
+            font-size: 0.8rem;
+            display: inline-block; }
+            @media (min-width: 426px) {
+              .landingBody .content ul li a h2.title {
+                font-size: 1.125rem; } }
+          .landingBody .content ul li a span.date {
+            color: #ffffff;
+            font-weight: 400;
+            font-size: 0.8rem; }
+            @media (min-width: 426px) {
+              .landingBody .content ul li a span.date {
+                font-size: 1.125rem; } }

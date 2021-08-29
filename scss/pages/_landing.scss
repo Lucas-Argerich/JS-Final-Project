@@ -21,7 +21,7 @@
         justify-content: space-around;
         align-items: center;
 
-        h2 {
+        .name {
             justify-self: flex-start;
             color: $white;
             text-align: center;
@@ -29,7 +29,7 @@
 
         input {
             width: 350px;
-            margin: 0 20px;
+            margin-bottom: 50px;
             height: 60px;
             border-radius: 10px;
             text-align: center;
@@ -64,31 +64,37 @@
 
             li {
                 line-height: 30px;
-                display: flex;
-                justify-content: space-between;
 
-                h3 {
-                    color: $yellow;
-                    font-weight: 400;
-                    font-size: 0.8rem;
+                a {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    text-decoration: none;
 
-                    @media (min-width:426px) {
-                        font-size: 1.125rem;
+                    h2.title {
+                        color: $yellow;
+                        font-weight: 400;
+                        font-size: 0.8rem;
+
+                        @media (min-width:426px) {
+                            font-size: 1.125rem;
+                        }
+
+                        display: inline-block;
                     }
 
-                    display: inline-block;
-                }
+                    span.date {
+                        color: $white;
+                        font-weight: 400;
+                        font-size: 0.8rem;
 
-                span {
-                    color: $white;
-                    font-weight: 400;
-                    font-size: 0.8rem;
+                        @media (min-width:426px) {
+                            font-size: 1.125rem;
+                        }
 
-                    @media (min-width:426px) {
-                        font-size: 1.125rem;
                     }
-
                 }
+
             }
         }
 
