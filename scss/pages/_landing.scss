@@ -28,9 +28,9 @@
         }
 
         input {
-            width: 350px;
-            margin-bottom: 50px;
-            height: 60px;
+            width: 310px;
+            margin-bottom: 100px;
+            height: 50px;
             border-radius: 10px;
             text-align: center;
             @include placeholderFont;
@@ -49,6 +49,7 @@
 
             @media (min-width:426px) {
                 width: 500px;
+                height: 60px;
             }
         }
 

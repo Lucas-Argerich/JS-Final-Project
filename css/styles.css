@@ -52,9 +52,9 @@ body::-webkit-scrollbar {
       color: #ffffff;
       text-align: center; }
     .landingBody .content input {
-      width: 350px;
-      margin-bottom: 50px;
-      height: 60px;
+      width: 310px;
+      margin-bottom: 100px;
+      height: 50px;
       border-radius: 10px;
       text-align: center;
       font-size: 2.25rem;
@@ -72,7 +72,8 @@ body::-webkit-scrollbar {
           color: #00000000; }
       @media (min-width: 426px) {
         .landingBody .content input {
-          width: 500px; } }
+          width: 500px;
+          height: 60px; } }
     .landingBody .content ul {
       margin-top: 80px;
       width: 80vw;
