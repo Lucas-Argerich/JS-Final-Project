@@ -1,0 +1,128 @@
+.landingBody {
+    background-color: $blue;
+    height: 100vh;
+
+    header {
+        height: 20%;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+
+        h1 {
+            text-align: center;
+            font-size: 3.5rem;
+            color: $yellow;
+            @media (min-width:426px) {
+                font-size: 4.5rem;
+            }
+        }
+    }
+
+    .content {
+        height: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+
+        .name {
+            justify-self: flex-start;
+            color: $white;
+            text-align: center;
+        }
+
+        input {
+            width: 310px;
+            margin-bottom: 100px;
+            height: 50px;
+            border-radius: 10px;
+            text-align: center;
+            @include placeholderFont;
+
+            &::placeholder {
+                @include placeholderFont;
+            }
+
+            &:focus {
+                outline: none;
+
+                &::placeholder {
+                    color: #00000000;
+                }
+            }
+
+            @media (min-width:426px) {
+                width: 500px;
+                height: 60px;
+            }
+        }
+
+        ul {
+            margin-top: 80px;
+            width: 80vw;
+
+            @media (min-width:426px) {
+                width: 50vw;
+            }
+
+            height:90%;
+
+            li {
+                line-height: 30px;
+
+                a {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    text-decoration: none;
+
+                    &:hover>.title {
+                        font-size: 0.9rem;
+                    }
+
+                    &:hover>.date {
+                        font-size: 0.9rem;
+                    }
+
+                    @media (min-width:426px) {
+                        &:hover>.title {
+                            font-size: 1.2rem;
+                        }
+
+                        &:hover>.date {
+                            font-size: 1.2rem;
+                        }
+
+                    }
+
+                    h2.title {
+                        color: $yellow;
+                        font-weight: 400;
+                        font-size: 0.8rem;
+
+                        @media (min-width:426px) {
+                            font-size: 1.125rem;
+                        }
+
+                        display: inline-block;
+
+
+                    }
+
+                    span.date {
+                        color: $white;
+                        font-weight: 400;
+                        font-size: 0.8rem;
+
+                        @media (min-width:426px) {
+                            font-size: 1.125rem;
+                        }
+
+                    }
+                }
+
+            }
+        }
+
+    }
+}
