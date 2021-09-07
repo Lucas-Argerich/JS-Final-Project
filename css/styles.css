@@ -130,16 +130,22 @@ body::-webkit-scrollbar {
       color: #FCA311;
       text-align: center;
       margin: auto; }
+      @media (min-width: 768px) {
+        .noteBody header h1 {
+          font-size: 3rem; } }
   .noteBody aside {
+    display: none;
     position: fixed;
     padding: 0 20px;
     min-height: 100%;
     width: calc(100% - 20px);
     background: #14213D;
     z-index: 1;
-    display: none;
     flex-direction: column;
     align-items: flex-end; }
+    @media (min-width: 768px) {
+      .noteBody aside {
+        width: 37.5%; } }
     .noteBody aside .noteList {
       padding-top: 10px;
       width: 100%; }
@@ -170,7 +176,45 @@ body::-webkit-scrollbar {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: fit-content(100%) auto fit-content(100%);
-    row-gap: 20px; }
+    gap: 20px; }
+    @media (min-width: 768px) {
+      .noteBody main {
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: fit-content(100%) fit-content(100%) auto fit-content(100%); } }
+    .noteBody main .dateContainer {
+      display: none; }
+      @media (min-width: 768px) {
+        .noteBody main .dateContainer {
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          min-height: 100px;
+          grid-row: 1/2;
+          background: #14213D;
+          justify-content: flex-end;
+          border-radius: 3px; }
+          .noteBody main .dateContainer .bigDate {
+            color: #FCA311;
+            height: 100%;
+            line-height: 100px;
+            text-align: center;
+            font-size: 2.25rem; }
+          .noteBody main .dateContainer .timeText {
+            color: #ffffff;
+            display: inline;
+            background: #000000;
+            text-align: center;
+            font-size: 1.125rem;
+            padding: 5px 0; } }
+    @media (min-width: 768px) {
+      .noteBody main .creationDateDiv {
+        grid-column: 1/4; } }
+    @media (min-width: 768px) {
+      .noteBody main .lastChangeDiv {
+        grid-column: 4/7; } }
+    @media (min-width: 768px) {
+      .noteBody main .todaysDateDiv {
+        grid-column: 7/9; } }
     .noteBody main .titleContainer {
       grid-column: 1/6;
       grid-row: 1/2;
@@ -181,19 +225,34 @@ body::-webkit-scrollbar {
       display: flex;
       flex-direction: column;
       justify-content: center; }
+      @media (min-width: 768px) {
+        .noteBody main .titleContainer {
+          grid-column: 1/9;
+          grid-row: 2/3;
+          min-height: 50px; } }
       .noteBody main .titleContainer h2 {
         font-size: 1.5rem;
         font-weight: 600;
         padding: 0 5px; }
+        @media (min-width: 768px) {
+          .noteBody main .titleContainer h2 {
+            font-size: 2.25rem; } }
     .noteBody main .textContainer {
       grid-column: 1/6;
       grid-row: 2/3;
       background: #ffffff;
       border-radius: 3px; }
+      @media (min-width: 768px) {
+        .noteBody main .textContainer {
+          grid-column: 1/9;
+          grid-row: 3/4; } }
       .noteBody main .textContainer h3 {
         padding: 5px;
         font-size: 1rem;
         font-weight: 500; }
+        @media (min-width: 768px) {
+          .noteBody main .textContainer h3 {
+            font-size: 1.5rem; } }
     .noteBody main #edit {
       grid-column: 1/3;
       grid-row: 3/4;
@@ -203,3 +262,9 @@ body::-webkit-scrollbar {
       min-height: 40px;
       font-size: 1.1rem;
       font-weight: 600; }
+      @media (min-width: 768px) {
+        .noteBody main #edit {
+          grid-column: 1/4;
+          grid-row: 4/5;
+          min-height: 50px;
+          font-size: 1.5rem; } }
