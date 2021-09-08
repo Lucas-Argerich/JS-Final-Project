@@ -1,6 +1,7 @@
 .noteBody {
     position: relative;
     min-height: 100vh;
+    overflow: hidden;
 
     header {
         padding: 0 20px;
@@ -22,7 +23,7 @@
     aside {
         //Change the display to flex to see the aside
         display: none;
-        position: fixed;
+        position: absolute;
         padding: 0 20px;
         min-height: 100%;
         width: calc(100% - 20px);

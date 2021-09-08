@@ -111,6 +111,9 @@
     h5 {
         font-size: 1.1rem;
         font-weight: normal;
+        @media (min-width:768px) {
+            font-size: 1.25rem;
+        }
     }
 
     .dateContainer {
