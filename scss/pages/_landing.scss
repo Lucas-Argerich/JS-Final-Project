@@ -32,10 +32,12 @@
             height: 50px;
             border-radius: 10px;
             text-align: center;
-            @include placeholderFont;
+            text-align: center;
+            position: relative;
 
             &::placeholder {
-                @include placeholderFont;
+                text-align: center;
+                position: relative;
             }
 
             &:focus {

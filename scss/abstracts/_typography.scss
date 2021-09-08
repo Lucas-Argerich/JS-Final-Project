@@ -20,11 +20,14 @@
         }
     }
 
-    @mixin placeholderFont {
+    input {
         font-size: 2.25rem;
         color: $black;
-        text-align: center;
-        position: relative;
+
+        &::placeholder {
+            font-size: 2.25rem;
+            color: $black;
+        }
 
     }
 
