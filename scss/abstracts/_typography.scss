@@ -2,18 +2,132 @@
     font-family: 'Ubuntu', sans-serif;
 }
 
-h2 {
-    font-size: 2.5rem;
+.landingBody {
+    h1 {
+        font-size: 3.5rem;
+        color: $yellow;
 
-    @media (min-width:426px) {
-        font-size: 3rem;
+        @media (min-width:426px) {
+            font-size: 4.5rem;
+        }
     }
-}
 
-@mixin placeholderFont {
-    font-size: 2.25rem;
-    color: $black;
-    text-align: center;
-    position: relative;
+    h2.name {
+        font-size: 2.5rem;
 
+        @media (min-width:426px) {
+            font-size: 3rem;
+        }
+    }
+
+    @mixin placeholderFont {
+        font-size: 2.25rem;
+        color: $black;
+        text-align: center;
+        position: relative;
+
+    }
+
+    .content {
+        ul {
+            li {
+                a {
+                    &:hover>.title {
+                        font-size: 0.9rem;
+                    }
+
+                    &:hover>.date {
+                        font-size: 0.9rem;
+                    }
+
+                    @media (min-width:426px) {
+                        &:hover>.title {
+                            font-size: 1.2rem;
+                        }
+
+                        &:hover>.date {
+                            font-size: 1.2rem;
+                        }
+
+                    }
+
+                    h2.title {
+                        color: $yellow;
+                        font-weight: 400;
+                        font-size: 0.8rem;
+
+                        @media (min-width:426px) {
+                            font-size: 1.125rem;
+                        }
+                    }
+
+                    span.date {
+                        color: $white;
+                        font-weight: 400;
+                        font-size: 0.8rem;
+
+                        @media (min-width:426px) {
+                            font-size: 1.125rem;
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+
+    .noteBody {
+        h1 {
+            font-size: 2rem;
+            color: $yellow;
+
+            @media (min-width:768px) {
+                font-size: 3rem;
+            }
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+
+            @media (min-width:768px) {
+                font-size: 2.25rem;
+            }
+        }
+
+        h3 {
+            font-size: 1rem;
+            font-weight: 500;
+
+            @media (min-width:768px) {
+                font-size: 1.5rem;
+            }
+        }
+
+        h5 {
+            font-size: 1.1rem;
+            font-weight: normal;
+        }
+
+        .dateContainer {
+            .bigDate {
+                font-size: 2.25rem;
+                color: $yellow;
+            }
+
+            .timeText {
+                font-size: 1.125rem;
+                color: $white;
+            }
+        }
+
+        .button {
+            font-size: 1.1rem;
+            font-weight: 600;
+
+            @media (min-width:768px) {
+                font-size: 1.5rem;
+            }
+        }
+    }
 }

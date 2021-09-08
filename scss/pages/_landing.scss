@@ -10,11 +10,6 @@
 
         h1 {
             text-align: center;
-            font-size: 3.5rem;
-            color: $yellow;
-            @media (min-width:426px) {
-                font-size: 4.5rem;
-            }
         }
     }
 
@@ -76,48 +71,8 @@
                     justify-content: space-between;
                     text-decoration: none;
 
-                    &:hover>.title {
-                        font-size: 0.9rem;
-                    }
-
-                    &:hover>.date {
-                        font-size: 0.9rem;
-                    }
-
-                    @media (min-width:426px) {
-                        &:hover>.title {
-                            font-size: 1.2rem;
-                        }
-
-                        &:hover>.date {
-                            font-size: 1.2rem;
-                        }
-
-                    }
-
                     h2.title {
-                        color: $yellow;
-                        font-weight: 400;
-                        font-size: 0.8rem;
-
-                        @media (min-width:426px) {
-                            font-size: 1.125rem;
-                        }
-
                         display: inline-block;
-
-
-                    }
-
-                    span.date {
-                        color: $white;
-                        font-weight: 400;
-                        font-size: 0.8rem;
-
-                        @media (min-width:426px) {
-                            font-size: 1.125rem;
-                        }
-
                     }
                 }
 
