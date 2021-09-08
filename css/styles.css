@@ -57,44 +57,44 @@
     .landingBody .content ul li a span.date {
       font-size: 1.125rem; } }
 
-.landingBody .noteBody h1 {
+.noteBody h1 {
   font-size: 2rem;
   color: #FCA311; }
   @media (min-width: 768px) {
-    .landingBody .noteBody h1 {
+    .noteBody h1 {
       font-size: 3rem; } }
 
-.landingBody .noteBody h2 {
+.noteBody h2 {
   font-size: 1.5rem;
   font-weight: 600; }
   @media (min-width: 768px) {
-    .landingBody .noteBody h2 {
+    .noteBody h2 {
       font-size: 2.25rem; } }
 
-.landingBody .noteBody h3 {
+.noteBody h3 {
   font-size: 1rem;
   font-weight: 500; }
   @media (min-width: 768px) {
-    .landingBody .noteBody h3 {
+    .noteBody h3 {
       font-size: 1.5rem; } }
 
-.landingBody .noteBody h5 {
+.noteBody h5 {
   font-size: 1.1rem;
   font-weight: normal; }
 
-.landingBody .noteBody .dateContainer .bigDate {
+.noteBody .dateContainer .bigDate {
   font-size: 2.25rem;
   color: #FCA311; }
 
-.landingBody .noteBody .dateContainer .timeText {
+.noteBody .dateContainer .timeText {
   font-size: 1.125rem;
   color: #ffffff; }
 
-.landingBody .noteBody .button {
+.noteBody .button {
   font-size: 1.1rem;
   font-weight: 600; }
   @media (min-width: 768px) {
-    .landingBody .noteBody .button {
+    .noteBody .button {
       font-size: 1.5rem; } }
 
 html {
