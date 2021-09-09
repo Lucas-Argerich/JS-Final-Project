@@ -2,8 +2,9 @@ html {
     overflow-y: scroll;
 }
 
-body::-webkit-scrollbar {
+.landingBody::-webkit-scrollbar {
     width: 10px;
+    background: $blue;
 
     &-thumb {
         position: fixed;
@@ -11,5 +12,32 @@ body::-webkit-scrollbar {
         border-radius: 2px;
         border: 3px solid transparent;
         background-clip: content-box;
+    }
+}
+
+.noteBody {
+    &::-webkit-scrollbar {
+        width: 10px;
+        background: $gray;
+
+        &-thumb {
+            position: fixed;
+            background-color: $blue;
+            border-radius: 2px;
+            border: 3px solid transparent;
+            background-clip: content-box;
+        }
+    }
+    aside::-webkit-scrollbar {
+        width: 10px;
+        background: $blue;
+    
+        &-thumb {
+            position: fixed;
+            background-color: $white;
+            border-radius: 2px;
+            border: 3px solid transparent;
+            background-clip: content-box;
+        }
     }
 }
