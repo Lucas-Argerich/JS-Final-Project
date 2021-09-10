@@ -96,17 +96,29 @@
     .noteBody h3 {
       font-size: 1.2rem; } }
 
-.noteBody h5 {
+.noteBody a:hover > .asideNoteTitle {
+  font-size: 1.2rem; }
+  @media (min-width: 768px) {
+    .noteBody a:hover > .asideNoteTitle {
+      font-size: 1.35rem; } }
+  @media (min-width: 1024px) {
+    .noteBody a:hover > .asideNoteTitle {
+      font-size: 1rem; } }
+  @media (min-width: 1440px) {
+    .noteBody a:hover > .asideNoteTitle {
+      font-size: 1.1rem; } }
+
+.noteBody a h5 {
   font-size: 1.1rem;
   font-weight: normal; }
   @media (min-width: 768px) {
-    .noteBody h5 {
+    .noteBody a h5 {
       font-size: 1.25rem; } }
   @media (min-width: 1024px) {
-    .noteBody h5 {
+    .noteBody a h5 {
       font-size: 0.9rem; } }
   @media (min-width: 1440px) {
-    .noteBody h5 {
+    .noteBody a h5 {
       font-size: 1rem; } }
 
 .noteBody .dateContainer .bigDate {
@@ -239,8 +251,11 @@ html {
     .noteBody {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
-      grid-template-rows: 150px auto;
+      grid-template-rows: 120px auto;
       grid-template-areas: "header header main main main main main main main main main main" "aside aside main main main main main main main main main main"; } }
+  @media (min-width: 1440px) {
+    .noteBody {
+      grid-template-rows: 150px auto; } }
   .noteBody header {
     padding: 0 20px;
     height: 80px;
@@ -258,6 +273,14 @@ html {
         height: 100%;
         padding: 0;
         grid-area: header; }
+        .noteBody header h1::after {
+          content: "";
+          display: block;
+          height: 1px;
+          width: 100%;
+          background: #ffffff;
+          position: relative;
+          top: 20px; }
         .noteBody header input {
           display: none; } }
   .noteBody aside {
@@ -282,28 +305,46 @@ html {
         position: relative;
         float: left;
         grid-area: aside;
+        height: calc(100vh - 120px); } }
+    @media (min-width: 1440px) {
+      .noteBody aside {
         height: calc(100vh - 150px); } }
     .noteBody aside .noteList {
       padding-top: 10px;
       width: 100%; }
       .noteBody aside .noteList .asideNoteInline {
+        position: relative;
         display: flex;
         justify-content: space-between;
-        padding-bottom: 15px; }
+        padding-bottom: 15px;
+        height: 35px; }
         .noteBody aside .noteList .asideNoteInline h5 {
-          display: inline-block; }
-        .noteBody aside .noteList .asideNoteInline .AsideNoteTitle {
+          display: inline-block;
+          transition: ease-in-out 120ms; }
+        .noteBody aside .noteList .asideNoteInline .newNoteTitle {
           color: #FCA311; }
+          .noteBody aside .noteList .asideNoteInline .newNoteTitle::after {
+            content: "";
+            display: block;
+            height: 1px;
+            width: 75%;
+            background: #FCA311; }
+        .noteBody aside .noteList .asideNoteInline .asideNoteTitle {
+          color: #FCA311;
+          width: 100%;
+          overflow: hidden; }
         .noteBody aside .noteList .asideNoteInline .asideNoteDate {
-          color: #E5E5E5; }
+          color: #E5E5E5;
+          padding-left: 20px;
+          position: relative; }
           .noteBody aside .noteList .asideNoteInline .asideNoteDate::before {
             content: "";
             display: inline-block;
             width: 1px;
             height: 100%;
             background: #E5E5E5;
-            position: relative;
-            right: 10px; }
+            position: absolute;
+            left: 0; }
   .noteBody main {
     min-height: calc(100vh - 80px);
     background: #E5E5E5;
