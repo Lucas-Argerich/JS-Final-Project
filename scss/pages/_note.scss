@@ -82,7 +82,8 @@
             grid-area: aside;
             height: calc(100vh - 120px);
         }
-        @media (min-width: 1440px){
+
+        @media (min-width: 1440px) {
             height: calc(100vh - 150px);
         }
 
@@ -97,17 +98,18 @@
                 padding-bottom: 15px;
                 height: 35px;
 
-                h5 {
+                h3 {
                     display: inline-block;
-                    transition: ease-in-out 120ms ;
+                    transition: ease-in-out 120ms;
                 }
 
-                .newNoteTitle{
+                .newNoteTitle {
                     color: $yellow;
-                    &::after{
+
+                    &::after {
                         content: "";
                         display: block;
-                        height:1px;
+                        height: 1px;
                         width: 75%;
                         background: $yellow;
                     }
@@ -131,7 +133,7 @@
                         height: 100%;
                         background: $gray;
                         position: absolute;
-                        left:0;
+                        left: 0;
                     }
                 }
 
@@ -257,8 +259,8 @@
                 grid-row: 3/4;
             }
 
-            h3 {
-                padding: 5px;
+            p {
+                padding: 5px 5px 50px;
             }
         }
 
