@@ -23,17 +23,25 @@
       font-size: 3rem; } }
 
 .landingBody input {
-  font-size: 2.25rem;
+  font-size: 1.25rem;
   color: #000000; }
   .landingBody input::placeholder {
-    font-size: 2.25rem;
+    font-size: 1.25rem;
     color: #000000; }
+  @media (min-width: 426px) {
+    .landingBody input {
+      font-size: 1.75rem; }
+      .landingBody input::placeholder {
+        font-size: 1.75rem; } }
+
+.landingBody p {
+  color: #FCA311; }
 
 .landingBody .content ul li a:hover > .title {
-  font-size: 0.9rem; }
+  font-size: 0.85rem; }
 
 .landingBody .content ul li a:hover > .date {
-  font-size: 0.9rem; }
+  font-size: 0.85rem; }
 
 @media (min-width: 426px) {
   .landingBody .content ul li a:hover > .title {
@@ -97,16 +105,16 @@
       font-size: 1.2rem; } }
 
 .noteBody a:hover > .asideNoteTitle {
-  font-size: 1.2rem; }
+  font-size: 1.07rem; }
   @media (min-width: 768px) {
     .noteBody a:hover > .asideNoteTitle {
-      font-size: 1.35rem; } }
+      font-size: 1.22rem; } }
   @media (min-width: 1024px) {
     .noteBody a:hover > .asideNoteTitle {
-      font-size: 1rem; } }
+      font-size: 0.87rem; } }
   @media (min-width: 1440px) {
     .noteBody a:hover > .asideNoteTitle {
-      font-size: 1.1rem; } }
+      font-size: 0.97rem; } }
 
 .noteBody a h3 {
   font-size: 1.1rem;
@@ -120,6 +128,11 @@
   @media (min-width: 1440px) {
     .noteBody a h3 {
       font-size: 1rem; } }
+
+.noteBody #logOff {
+  font-size: 1rem;
+  color: #FCA311;
+  text-decoration: underline; }
 
 .noteBody .dateContainer .bigDate {
   font-size: 2.25rem;
@@ -190,6 +203,25 @@ html {
 .landingBody {
   background-color: #14213D;
   height: 100vh; }
+  .landingBody button {
+    width: 40px;
+    background: transparent;
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    cursor: pointer;
+    display: none; }
+    .landingBody button svg {
+      fill: #FCA311;
+      transform: rotateY(180deg);
+      cursor: pointer; }
+      .landingBody button svg path {
+        cursor: pointer; }
+    @media (min-width: 426px) {
+      .landingBody button {
+        width: 50px;
+        top: 40px;
+        left: 50px; } }
   .landingBody header {
     height: 20%;
     display: flex;
@@ -198,34 +230,49 @@ html {
     .landingBody header h1 {
       text-align: center; }
   .landingBody .content {
+    position: relative;
     height: 80%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center; }
+    .landingBody .content#notes {
+      display: none; }
     .landingBody .content .name {
       justify-self: flex-start;
       color: #ffffff;
       text-align: center; }
-    .landingBody .content input {
-      width: 310px;
-      margin-bottom: 100px;
-      height: 50px;
-      border-radius: 10px;
-      text-align: center;
-      text-align: center;
-      position: relative; }
-      .landingBody .content input::placeholder {
+    .landingBody .content #formContainer {
+      padding-bottom: 150px; }
+      .landingBody .content #formContainer #formId input {
+        width: 310px;
+        margin-bottom: 20px;
+        height: 50px;
+        border-radius: 10px;
         text-align: center;
-        position: relative; }
-      .landingBody .content input:focus {
-        outline: none; }
-        .landingBody .content input:focus::placeholder {
-          color: #00000000; }
-      @media (min-width: 426px) {
-        .landingBody .content input {
-          width: 500px;
-          height: 60px; } }
+        text-align: center;
+        position: relative;
+        display: flex; }
+        .landingBody .content #formContainer #formId input#submit {
+          display: none; }
+        .landingBody .content #formContainer #formId input::placeholder {
+          text-align: center;
+          position: relative; }
+        .landingBody .content #formContainer #formId input:focus {
+          outline: none; }
+          .landingBody .content #formContainer #formId input:focus::placeholder {
+            color: #00000000; }
+        @media (min-width: 426px) {
+          .landingBody .content #formContainer #formId input {
+            width: 500px;
+            height: 60px; } }
+      .landingBody .content #formContainer p {
+        text-align: center;
+        position: absolute;
+        width: 310px; }
+        @media (min-width: 426px) {
+          .landingBody .content #formContainer p {
+            width: 500px; } }
     .landingBody .content ul {
       margin-top: 80px;
       width: 80vw;
@@ -239,9 +286,13 @@ html {
           width: 100%;
           display: flex;
           justify-content: space-between;
-          text-decoration: none; }
-          .landingBody .content ul li a h2.title {
-            display: inline-block; }
+          text-decoration: none;
+          cursor: pointer; }
+          .landingBody .content ul li a h2 {
+            display: inline-block;
+            transition: ease-in-out 150ms; }
+          .landingBody .content ul li a span {
+            transition: ease-in-out 150ms; }
 
 .noteBody {
   position: relative;
@@ -311,17 +362,20 @@ html {
         height: calc(100vh - 150px); } }
     .noteBody aside .noteList {
       padding-top: 10px;
-      width: 100%; }
+      width: 100%;
+      height: calc(100% - 100px); }
       .noteBody aside .noteList .asideNoteInline {
         position: relative;
         display: flex;
         justify-content: space-between;
         padding-bottom: 15px;
-        height: 35px; }
+        height: 35px;
+        align-items: center; }
         .noteBody aside .noteList .asideNoteInline h3 {
           display: inline-block;
-          transition: ease-in-out 120ms;
-          cursor: pointer; }
+          transition: ease-in-out 100ms;
+          cursor: pointer;
+          white-space: nowrap; }
         .noteBody aside .noteList .asideNoteInline .newNoteTitle {
           color: #FCA311; }
           .noteBody aside .noteList .asideNoteInline .newNoteTitle::after {
@@ -336,16 +390,22 @@ html {
           overflow: hidden; }
         .noteBody aside .noteList .asideNoteInline .asideNoteDate {
           color: #E5E5E5;
-          padding-left: 20px;
+          width: 80px;
+          padding-left: 10px;
           position: relative; }
           .noteBody aside .noteList .asideNoteInline .asideNoteDate::before {
             content: "";
             display: inline-block;
             width: 1px;
+            border-radius: 1px;
             height: 100%;
             background: #E5E5E5;
             position: absolute;
             left: 0; }
+    .noteBody aside #logOff {
+      width: 100%;
+      background: #14213D;
+      cursor: pointer; }
   .noteBody main {
     min-height: calc(100vh - 80px);
     background: #E5E5E5;

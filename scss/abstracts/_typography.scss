@@ -21,14 +21,24 @@
     }
 
     input {
-        font-size: 2.25rem;
+        font-size: 1.25rem;
         color: $black;
 
         &::placeholder {
-            font-size: 2.25rem;
+            font-size: 1.25rem;
             color: $black;
         }
 
+        @media (min-width:426px) {
+            font-size: 1.75rem;
+
+            &::placeholder {
+                font-size: 1.75rem;
+            }
+        }
+    }
+    p{
+        color: $yellow;
     }
 
     .content {
@@ -37,11 +47,11 @@
                 a {
 
                     &:hover>.title {
-                        font-size: 0.9rem;
+                        font-size: 0.85rem;
                     }
 
                     &:hover>.date {
-                        font-size: 0.9rem;
+                        font-size: 0.85rem;
                     }
 
                     @media (min-width:426px) {
@@ -135,18 +145,18 @@
 
     a {
         &:hover>.asideNoteTitle {
-            font-size: 1.2rem;
+            font-size: 1.07rem;
 
             @media (min-width:768px) {
-                font-size: 1.35rem;
+                font-size: 1.22rem;
             }
 
             @media (min-width: 1024px) {
-                font-size: 1rem;
+                font-size: 0.87rem;
             }
 
             @media (min-width:1440px) {
-                font-size: 1.1rem;
+                font-size: 0.97rem;
             }
         }
 
@@ -166,6 +176,11 @@
                 font-size: 1rem;
             }
         }
+    }
+    #logOff{
+        font-size: 1rem;
+        color: $yellow;
+        text-decoration: underline;
     }
 
     .dateContainer {

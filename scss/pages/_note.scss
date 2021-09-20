@@ -90,6 +90,7 @@
         .noteList {
             padding-top: 10px;
             width: 100%;
+            height: calc(100% - 100px);
 
             .asideNoteInline {
                 position: relative;
@@ -97,11 +98,14 @@
                 justify-content: space-between;
                 padding-bottom: 15px;
                 height: 35px;
+                align-items: center;
 
                 h3 {
                     display: inline-block;
-                    transition: ease-in-out 120ms;
+                    transition: ease-in-out 100ms;
                     cursor: pointer;
+                    white-space: nowrap;
+
                 }
 
                 .newNoteTitle {
@@ -124,13 +128,15 @@
 
                 .asideNoteDate {
                     color: $gray;
-                    padding-left: 20px;
+                    width: 80px;
+                    padding-left: 10px;
                     position: relative;
 
                     &::before {
                         content: "";
                         display: inline-block;
                         width: 1px;
+                        border-radius: 1px;
                         height: 100%;
                         background: $gray;
                         position: absolute;
@@ -139,6 +145,12 @@
                 }
 
             }
+        }
+
+        #logOff {
+            width: 100%;
+            background: $blue;
+            cursor: pointer;
         }
     }
 
