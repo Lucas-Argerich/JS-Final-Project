@@ -27,27 +27,12 @@
             <option id="orderAlphabeticalAZ">A-Z</option>
             <option id="orderAlphabeticalZA">Z-A</option>
         </select>
-        <div class="noteList">
+        <div class="noteList" id="noteList">
             <a class="asideNoteInline newNote">
                 <h3 class="newNoteTitle">New Note (+) </h3>
             </a>
-            <a class="asideNoteInline">
-                <h3 class="asideNoteTitle">Title</h3>
-                <h3 class="asideNoteDate">dd/mm</h3>
-            </a>
-            <a class="asideNoteInline">
-                <h3 class="asideNoteTitle">Title</h3>
-                <h3 class="asideNoteDate">dd/mm</h3>
-            </a>
-            <a class="asideNoteInline">
-                <h3 class="asideNoteTitle">Title</h3>
-                <h3 class="asideNoteDate">dd/mm</h3>
-            </a>
-            <a class="asideNoteInline">
-                <h3 class="asideNoteTitle">Title</h3>
-                <h3 class="asideNoteDate">dd/mm</h3>
-            </a>
         </div>
+        <input type="button" id="logOff" name="logOff" value="Logoff" onclick="logOff()">
 
     </aside>
     <main>
@@ -73,6 +58,8 @@
         </div>
         <input type="button" class="button" value="Edit">
     </main>
+    <script type="text/javascript" src="./js/noteDatabase.js"></script>
+    <script type="text/javascript" src="./js/note.js"></script>
 </body>
 
 </html>
