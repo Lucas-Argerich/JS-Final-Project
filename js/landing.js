@@ -1,9 +1,12 @@
 //RememberMe
-if (localStorage.user !== "") {
+if ((localStorage.getItem("user") !== null) && localStorage.user !== "") {
     email.value = JSON.parse(localStorage.user).email
     password.value = JSON.parse(localStorage.user).password
     validate()
 }
+
+//FormSubmit
+document.getElementById("formId").addEventListener("submit", validate)
 
 //Login
 function validate() {
@@ -21,12 +24,11 @@ function validate() {
 
         localStorage.setItem('user', JSON.stringify(emailCheck));
 
-        //Note List Loader
+        //Note List Generator
         const userNotes = Notes.filter(note => note.authorId == JSON.parse(localStorage.user).id)
         for (const note of userNotes) {
             let link = document.createElement("li")
-            link.innerHTML = `<a href=""><h2 class="title"> ${note.title} </h2><span class="date"> ${note.created_at} </span></a>`
-
+            link.innerHTML = `<a href="/note.html" class="noteLink" id="${note.id}"><h2 class="title"> ${note.title} </h2><span class="date"> ${note.created_at} </span></a>`
             let parent = document.getElementById("noteList")
             parent.appendChild(link)
 
@@ -39,8 +41,21 @@ function validate() {
     }
 }
 
+//LogOff
 function logOff() {
-    localStorage.user = "";
+    localStorage.removeItem("user")
     location.reload();
 }
 
+//LoadNote
+noteListLength = document.getElementById("noteList").getElementsByTagName("li").length
+for(let i = 0; i < noteListLength; i++){
+    document.getElementsByClassName("noteLink")[i].addEventListener("click", saveNote)
+}
+
+function saveNote() {
+    const noteSearchById = Notes.find(
+        a => a.id == this.id
+    );
+    sessionStorage.setItem('savedNote', JSON.stringify(noteSearchById))
+}
