@@ -389,6 +389,7 @@ html {
           width: 100%;
           overflow: hidden; }
         .noteBody aside .noteList .asideNoteInline .asideNoteDate {
+          text-align: right;
           color: #E5E5E5;
           width: 80px;
           padding-left: 10px;

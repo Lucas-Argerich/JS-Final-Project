@@ -1,5 +1,5 @@
 const Notes = [{
-    id: 0,
+    id: "nvz8v843y",
     title: "Mi primer Nota",
     content: "hola mundo! esta es mi primer nota.",
     created_at: "2021/08/10",
@@ -7,7 +7,7 @@ const Notes = [{
     authorId: 0
 },
 {
-    id: 1,
+    id: "zs1lcre3e",
     title: "Supermercado",
     content: "Comprar: Leche, Crema, Fideos, Tomates, Pan",
     created_at: "2015/06/21",
@@ -15,7 +15,7 @@ const Notes = [{
     authorId: 1
 },
 {
-    id: 2,
+    id: "6gei7eenv",
     title: "Cosas que hacer",
     content: "Tantas cosas por codear...",
     created_at: "2018/06/21",
