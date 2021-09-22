@@ -28,7 +28,7 @@ function validate() {
         const userNotes = Notes.filter(note => note.authorId == JSON.parse(localStorage.user).id)
         for (const note of userNotes) {
             let link = document.createElement("li")
-            link.innerHTML = `<a href="/note.html" class="noteLink" id="${note.id}"><h2 class="title"> ${note.title} </h2><span class="date"> ${note.created_at} </span></a>`
+            link.innerHTML = `<a href="note.html" class="noteLink" id="${note.id}"><h2 class="title"> ${note.title} </h2><span class="date"> ${note.created_at} </span></a>`
             let parent = document.getElementById("noteList")
             parent.appendChild(link)
 
