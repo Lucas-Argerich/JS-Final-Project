@@ -22,6 +22,7 @@
         background: $blue;
         display: flex;
         align-items: center;
+        z-index: 2;
 
         input {
             position: absolute;
@@ -46,7 +47,7 @@
                     width: 100%;
                     background: $white;
                     position: relative;
-                    top: 20px;
+                    top: 40px;
                 }
             }
 
@@ -58,16 +59,15 @@
 
     aside {
         //Change the display to flex to see the aside
-        display: none;
+        display: flex;
         position: absolute;
-        padding: 0 20px;
+        padding: 20px 10px 0;
         height: 100%;
         width: calc(100% - 20px);
         background: $blue;
         z-index: 1;
         flex-direction: column;
         align-items: flex-end;
-        overflow-y: scroll;
 
         @media (min-width:768px) {
             width: 37.5%;
@@ -81,6 +81,8 @@
             float: left;
             grid-area: aside;
             height: calc(100vh - 120px);
+            filter: drop-shadow(10px 0 10px #00000030);
+            padding: 30px 10px 0;
         }
 
         @media (min-width: 1440px) {
@@ -89,8 +91,13 @@
 
         .noteList {
             padding-top: 10px;
+            padding-left: 10px;
             width: 100%;
-            height: calc(100% - 100px);
+            height: calc(100% - 150px);
+
+            @media (min-width: 1024px) {
+                height: calc(100% - 100px);
+            }
 
             .asideNoteInline {
                 position: relative;
@@ -128,7 +135,7 @@
                 .asideNoteDate {
                     text-align: right;
                     color: $gray;
-                    width: 80px;
+                    width: 60px;
                     padding-left: 10px;
                     position: relative;
 
@@ -171,10 +178,6 @@
         @media (min-width:1024px) {
             grid-area: main;
             padding: 20px 100px;
-        }
-
-        @media (min-width:1440px) {
-            column-gap: 80px;
         }
 
         .dateContainer {
@@ -250,6 +253,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            filter: drop-shadow(0 0 3px #00000030);
 
             @media (min-width:768px) {
                 grid-column: 1/9;
@@ -267,6 +271,7 @@
             grid-row: 2/3;
             background: $white;
             border-radius: 3px;
+            filter: drop-shadow(0 0 4px #00000030);
 
             @media (min-width:768px) {
                 grid-column: 1/9;

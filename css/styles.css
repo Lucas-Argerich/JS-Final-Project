@@ -190,15 +190,17 @@ html {
     border: 3px solid transparent;
     background-clip: content-box; }
 
-.noteBody aside::-webkit-scrollbar {
-  width: 10px;
-  background: #14213D; }
-  .noteBody aside::-webkit-scrollbar-thumb {
-    position: fixed;
-    background-color: #ffffff;
-    border-radius: 2px;
-    border: 3px solid transparent;
-    background-clip: content-box; }
+.noteBody aside .noteList {
+  overflow-y: scroll; }
+  .noteBody aside .noteList::-webkit-scrollbar {
+    width: 10px;
+    background: #14213D; }
+    .noteBody aside .noteList::-webkit-scrollbar-thumb {
+      position: fixed;
+      background-color: #ffffff;
+      border-radius: 2px;
+      border: 3px solid transparent;
+      background-clip: content-box; }
 
 .landingBody {
   background-color: #14213D;
@@ -312,7 +314,8 @@ html {
     height: 80px;
     background: #14213D;
     display: flex;
-    align-items: center; }
+    align-items: center;
+    z-index: 2; }
     .noteBody header input {
       position: absolute; }
     .noteBody header h1 {
@@ -331,20 +334,19 @@ html {
           width: 100%;
           background: #ffffff;
           position: relative;
-          top: 20px; }
+          top: 40px; }
         .noteBody header input {
           display: none; } }
   .noteBody aside {
-    display: none;
+    display: flex;
     position: absolute;
-    padding: 0 20px;
+    padding: 20px 10px 0;
     height: 100%;
     width: calc(100% - 20px);
     background: #14213D;
     z-index: 1;
     flex-direction: column;
-    align-items: flex-end;
-    overflow-y: scroll; }
+    align-items: flex-end; }
     @media (min-width: 768px) {
       .noteBody aside {
         width: 37.5%; } }
@@ -356,14 +358,20 @@ html {
         position: relative;
         float: left;
         grid-area: aside;
-        height: calc(100vh - 120px); } }
+        height: calc(100vh - 120px);
+        filter: drop-shadow(10px 0 10px #00000030);
+        padding: 30px 10px 0; } }
     @media (min-width: 1440px) {
       .noteBody aside {
         height: calc(100vh - 150px); } }
     .noteBody aside .noteList {
       padding-top: 10px;
+      padding-left: 10px;
       width: 100%;
-      height: calc(100% - 100px); }
+      height: calc(100% - 150px); }
+      @media (min-width: 1024px) {
+        .noteBody aside .noteList {
+          height: calc(100% - 100px); } }
       .noteBody aside .noteList .asideNoteInline {
         position: relative;
         display: flex;
@@ -391,7 +399,7 @@ html {
         .noteBody aside .noteList .asideNoteInline .asideNoteDate {
           text-align: right;
           color: #E5E5E5;
-          width: 80px;
+          width: 60px;
           padding-left: 10px;
           position: relative; }
           .noteBody aside .noteList .asideNoteInline .asideNoteDate::before {
@@ -423,9 +431,6 @@ html {
       .noteBody main {
         grid-area: main;
         padding: 20px 100px; } }
-    @media (min-width: 1440px) {
-      .noteBody main {
-        column-gap: 80px; } }
     .noteBody main .dateContainer {
       display: none; }
       @media (min-width: 768px) {
@@ -480,7 +485,8 @@ html {
       border-radius: 3px;
       display: flex;
       flex-direction: column;
-      justify-content: center; }
+      justify-content: center;
+      filter: drop-shadow(0 0 3px #00000030); }
       @media (min-width: 768px) {
         .noteBody main .titleContainer {
           grid-column: 1/9;
@@ -492,7 +498,8 @@ html {
       grid-column: 1/6;
       grid-row: 2/3;
       background: #ffffff;
-      border-radius: 3px; }
+      border-radius: 3px;
+      filter: drop-shadow(0 0 4px #00000030); }
       @media (min-width: 768px) {
         .noteBody main .textContainer {
           grid-column: 1/9;
