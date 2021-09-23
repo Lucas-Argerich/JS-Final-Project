@@ -493,7 +493,7 @@ html {
           grid-row: 2/3;
           min-height: 50px; } }
       .noteBody main .titleContainer h2 {
-        padding: 0 5px; }
+        padding: 0 12px; }
     .noteBody main .textContainer {
       grid-column: 1/6;
       grid-row: 2/3;
