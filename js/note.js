@@ -1,5 +1,16 @@
-//Aside
+//Header
+document.getElementById('h1').addEventListener("click", function () {
+    window.location = "/"
+})
+asideToggleCheckbox = document.getElementById('ToggleNav').addEventListener("click", function () {
+    if (this.checked) {
+        document.getElementById('aside').style.display = "flex"
+    } else {
+        document.getElementById('aside').style.display = "none"
+    }
+})
 
+//Aside
 const userNotes = JSON.parse(localStorage.Notes).filter(note => note.authorId == JSON.parse(localStorage.user).id)
 for (const note of userNotes) {
     let link = document.createElement('a')
@@ -35,7 +46,7 @@ function edit() {
 }
 
 
-//Note Loader
+//NOTE LOADER
 
 //Head Title
 let title = document.createElement("title")
@@ -68,7 +79,7 @@ if (window.location.href.indexOf("note.html") != -1) {
     //Today's bigDate
     let todaysDate = document.createElement("span")
     todaysDate.className = "bigDate"
-    todaysDate.innerText = `${new Date().getDate()}/${new Date().getMonth() + 1} `
+    todaysDate.innerText = `${("0" + new Date().getDate()).slice(-2)}/${("0" + (new Date().getMonth() + 1)).slice(-2)}`
     document.getElementById("todaysDateDiv").prepend(todaysDate)
 
     //Note Edit
@@ -96,15 +107,18 @@ if (window.location.href.indexOf("edit.html") != -1) {
         let editedContent = document.getElementById("editTextContainer").value
         noteSave.title = editedTitle
         noteSave.content = editedContent
+        noteSave.edited_at = `${("0" + new Date().getDate()).slice(-2)}/${("0" + (new Date().getMonth() + 1)).slice(-2)}/${new Date().getFullYear()}`
         sessionStorage.setItem("savedNote", JSON.stringify(noteSave))
 
         let noteList = JSON.parse(localStorage.Notes)
-        const noteToEdit = JSON.parse(localStorage.Notes).findIndex(element => element.id == noteSave.id )
-        noteList[noteToEdit] = noteSave
-        localStorage.setItem("Notes", JSON.stringify(noteList))
-
+        const noteToEdit = JSON.parse(localStorage.Notes).find(element => element.id == noteSave.id)
+        if (noteToEdit != undefined) {
+            noteList[noteToEdit] = noteSave
+            localStorage.setItem("Notes", JSON.stringify(noteList))
+        } else {
+            noteList.push(noteSave)
+            localStorage.setItem("Notes", JSON.stringify(noteList))
+        }
         window.location = "note.html"
     })
-
 }
-

@@ -346,7 +346,8 @@ html {
       position: absolute; }
     .noteBody header h1 {
       text-align: center;
-      margin: auto; }
+      margin: auto;
+      cursor: pointer; }
     @media (min-width: 1024px) {
       .noteBody header {
         width: 100%;

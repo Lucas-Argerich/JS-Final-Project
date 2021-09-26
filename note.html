@@ -17,7 +17,7 @@
 <body class="noteBody">
     <header>
         <input type="checkbox" name="toggleNav" id="ToggleNav">
-        <h1>My Notes</h1>
+        <h1 id="h1">My Notes</h1>
     </header>
     <aside id="aside">
         <select name="listOrder" id="listOrder">
@@ -27,7 +27,7 @@
             <option id="orderAlphabeticalZA">Z-A</option>
         </select>
         <div class="noteList" id="noteList">
-            <a class="asideNoteInline newNote">
+            <a class="asideNoteInline newNote" id="newNote">
                 <h3 class="newNoteTitle">New Note (+) </h3>
             </a>
         </div>
@@ -53,6 +53,7 @@
         <input type="button" class="button" id="editButton" value="Edit">
     </main>
     <script type="text/javascript" src="./js/note.js"></script>
+    <script type="text/javascript" src="./js/creator.js"></script>
 </body>
 
 </html>
