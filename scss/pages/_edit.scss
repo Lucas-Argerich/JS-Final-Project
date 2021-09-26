@@ -1,0 +1,42 @@
+.noteBody {
+    .mainEdit {
+        .editTitleContainer {
+            padding: 0 12px;
+            outline: none;
+        }
+
+        .editTextContainer {
+            padding: 5px 5px 50px;
+            outline: none;
+            resize: none;
+        }
+
+        @media (min-width:768px) {
+            grid-template-rows: fit-content(100%) auto fit-content(100%);
+
+            .editTitleContainer {
+                grid-row: 1/2;
+            }
+
+            .editTextContainer {
+                grid-row: 2/3;
+            }
+
+            .button {
+                grid-row: 3/4;
+            }
+        }
+
+        .button.buttonSave {
+            grid-column: 4/6;
+
+            @media (min-width:768px) {
+                grid-column: 6/9;
+            }
+
+            @media (min-width:1024px) {
+                grid-column: 7/9;
+            }
+        }
+    }
+}

@@ -59,7 +59,7 @@
 
     aside {
         //Change the display to flex to see the aside
-        display: flex;
+        display: none;
         position: absolute;
         padding: 20px 10px 0;
         height: 100%;
@@ -94,6 +94,7 @@
             padding-left: 10px;
             width: 100%;
             height: calc(100% - 150px);
+            overflow-x: hidden;
 
             @media (min-width: 1024px) {
                 height: calc(100% - 100px);

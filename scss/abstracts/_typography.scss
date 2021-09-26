@@ -37,7 +37,8 @@
             }
         }
     }
-    p{
+
+    p {
         color: $yellow;
     }
 
@@ -177,7 +178,8 @@
             }
         }
     }
-    #logOff{
+
+    #logOff {
         font-size: 1rem;
         color: $yellow;
         text-decoration: underline;
@@ -225,6 +227,42 @@
 
         @media (min-width:1440px) {
             font-size: 1.3rem;
+        }
+    }
+
+    .mainEdit {
+        .editTitleContainer {
+            font-size: 1.5rem;
+            font-weight: 600;
+
+            @media (min-width:768px) {
+                font-size: 2.25rem;
+            }
+
+            @media (min-width: 1024px) {
+                font-size: 1.5rem;
+            }
+
+            @media (min-width:1440px) {
+                font-size: 1.8rem;
+            }
+        }
+
+        .editTextContainer {
+            font-size: 1rem;
+            font-weight: 500;
+
+            @media (min-width:768px) {
+                font-size: 1.5rem;
+            }
+
+            @media (min-width: 1024px) {
+                font-size: 1rem;
+            }
+
+            @media (min-width:1440px) {
+                font-size: 1.2rem;
+            }
         }
     }
 }

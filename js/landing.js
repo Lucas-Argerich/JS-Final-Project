@@ -25,7 +25,7 @@ function validate() {
         localStorage.setItem('user', JSON.stringify(emailCheck));
 
         //Note List Generator
-        const userNotes = Notes.filter(note => note.authorId == JSON.parse(localStorage.user).id)
+        const userNotes = JSON.parse(localStorage.Notes).filter(note => note.authorId == JSON.parse(localStorage.user).id)
         for (const note of userNotes) {
             let link = document.createElement("li")
             link.innerHTML = `<a href="note.html" class="noteLink" id="${note.id}"><h2 class="title"> ${note.title} </h2><span class="date"> ${note.created_at} </span></a>`
@@ -54,7 +54,7 @@ for(let i = 0; i < noteListLength; i++){
 }
 
 function saveNote() {
-    const noteSearchById = Notes.find(
+    const noteSearchById = JSON.parse(localStorage.Notes).find(
         a => a.id == this.id
     );
     sessionStorage.setItem('savedNote', JSON.stringify(noteSearchById))
