@@ -1,7 +1,12 @@
+if (localStorage.getItem("Notes") == null || localStorage.getItem("user") == null || sessionStorage.getItem("savedNote") == null) { 
+    window.location = "/"
+}
+
 //Header
 document.getElementById('h1').addEventListener("click", function () {
     window.location = "/"
 })
+
 asideToggleCheckbox = document.getElementById('ToggleNav').addEventListener("click", function () {
     if (this.checked) {
         document.getElementById('aside').style.display = "flex"
@@ -111,8 +116,8 @@ if (window.location.href.indexOf("edit.html") != -1) {
         sessionStorage.setItem("savedNote", JSON.stringify(noteSave))
 
         let noteList = JSON.parse(localStorage.Notes)
-        const noteToEdit = JSON.parse(localStorage.Notes).find(element => element.id == noteSave.id)
-        if (noteToEdit != undefined) {
+        const noteToEdit = JSON.parse(localStorage.Notes).findIndex(element => element.id == noteSave.id)
+        if (noteToEdit != -1) {
             noteList[noteToEdit] = noteSave
             localStorage.setItem("Notes", JSON.stringify(noteList))
         } else {
