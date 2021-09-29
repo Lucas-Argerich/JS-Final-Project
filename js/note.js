@@ -37,11 +37,12 @@ function saveNote() {
         a => a.id == this.id
     );
     sessionStorage.setItem('savedNote', JSON.stringify(noteSearchById))
-    location = "note.html"
+    window.location = "note.html"
 }
 
 function logOff() {
     localStorage.removeItem("user")
+    sessionStorage.removeItem("savedNote")
     window.location = "index.html"
 }
 
@@ -88,11 +89,15 @@ if (window.location.href.indexOf("note.html") != -1) {
     document.getElementById("todaysDateDiv").prepend(todaysDate)
 
     //Note Edit
-    document.getElementById("editButton").addEventListener("click", function () { location = "edit.html" })
+    document.getElementById("editButton").addEventListener("click", function () {
+        location = "edit.html"
+    })
 
     //Note Delete
     document.getElementById("deleteButton").addEventListener("click", function () {
-
+        notesWithoutDeleted = JSON.parse(localStorage.Notes).filter(note => note.id != JSON.parse(sessionStorage.savedNote).id)
+        localStorage.Notes = JSON.stringify(notesWithoutDeleted)
+        newNoteCreator()
     })
 }
 

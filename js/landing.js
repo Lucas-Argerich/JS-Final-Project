@@ -17,7 +17,6 @@ function validate() {
         a => a.email == email.value
     );
     if (emailCheck != null && emailCheck.password == password.value) {
-
         document.getElementById("login").style.display = "none";
         document.getElementById("notes").style.display = "flex";
         document.getElementById("logOff").style.display = "inherit";
@@ -31,7 +30,6 @@ function validate() {
             link.innerHTML = `<a href="note.html" class="noteLink" id="${note.id}"><h2 class="title"> ${note.title} </h2><span class="date"> ${note.created_at} </span></a>`
             let parent = document.getElementById("noteList")
             parent.appendChild(link)
-
         }
     } else {
         let retry = document.createElement("p")
@@ -44,6 +42,7 @@ function validate() {
 //LogOff
 function logOff() {
     localStorage.removeItem("user")
+    sessionStorage.removeItem("savedNote")
     location.reload();
 }
 
