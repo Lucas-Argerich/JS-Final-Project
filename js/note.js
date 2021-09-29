@@ -1,10 +1,10 @@
 if (localStorage.getItem("Notes") == null || localStorage.getItem("user") == null || sessionStorage.getItem("savedNote") == null) {
-    window.location = "../"
+    window.location = "index.html"
 }
 
 //Header
 document.getElementById('h1').addEventListener("click", function () {
-    window.location = "../"
+    window.location = "index.html"
 })
 
 asideToggleCheckbox = document.getElementById('ToggleNav').addEventListener("click", function () {
@@ -42,7 +42,7 @@ function saveNote() {
 
 function logOff() {
     localStorage.removeItem("user")
-    window.location = "../"
+    window.location = "index.html"
 }
 
 
@@ -92,7 +92,7 @@ if (window.location.href.indexOf("note.html") != -1) {
 
     //Note Delete
     document.getElementById("deleteButton").addEventListener("click", function () {
-        
+
     })
 }
 
