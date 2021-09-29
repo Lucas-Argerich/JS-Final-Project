@@ -25,11 +25,16 @@ function validate() {
 
         //Note List Generator
         const userNotes = JSON.parse(localStorage.Notes).filter(note => note.authorId == JSON.parse(localStorage.user).id)
-        for (const note of userNotes) {
-            let link = document.createElement("li")
-            link.innerHTML = `<a href="note.html" class="noteLink" id="${note.id}"><h2 class="title"> ${note.title} </h2><span class="date"> ${note.created_at} </span></a>`
-            let parent = document.getElementById("noteList")
-            parent.appendChild(link)
+
+        if (userNotes.length == 0) {
+            window.location = "note.html";
+        } else {
+            for (const note of userNotes) {
+                let link = document.createElement("li")
+                link.innerHTML = `<a href="note.html" class="noteLink" id="${note.id}"><h2 class="title"> ${note.title} </h2><span class="date"> ${note.created_at} </span></a>`
+                let parent = document.getElementById("noteList")
+                parent.appendChild(link)
+            }
         }
     } else {
         let retry = document.createElement("p")
@@ -48,7 +53,7 @@ function logOff() {
 
 //LoadNote
 noteListLength = document.getElementById("noteList").getElementsByTagName("li").length
-for(let i = 0; i < noteListLength; i++){
+for (let i = 0; i < noteListLength; i++) {
     document.getElementsByClassName("noteLink")[i].addEventListener("click", saveNote)
 }
 

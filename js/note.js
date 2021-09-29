@@ -1,5 +1,9 @@
-if (localStorage.getItem("Notes") == null || localStorage.getItem("user") == null || sessionStorage.getItem("savedNote") == null) {
+if (localStorage.getItem("Notes") == null || localStorage.getItem("user") == null) {
     window.location = "index.html"
+}
+
+if (sessionStorage.getItem("savedNote") == null) {
+    newNoteCreator()
 }
 
 //Header
@@ -56,7 +60,11 @@ function edit() {
 
 //Head Title
 let title = document.createElement("title")
-title.innerText = `${JSON.parse(sessionStorage.savedNote).title} | My Notes`
+if (JSON.parse(sessionStorage.savedNote).title != "") {
+    title.innerText = `${JSON.parse(sessionStorage.savedNote).title} | My Notes`
+} else {
+    title.innerText = `My Notes`
+}
 document.head.appendChild(title)
 
 if (window.location.href.indexOf("note.html") != -1) {
