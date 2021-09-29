@@ -20,22 +20,22 @@
         <h1 id="h1">My Notes</h1>
     </header>
     <aside id="aside">
-        <select name="listOrder" id="listOrder">
-            <option id="orderNew">New</option>
-            <option id="orderOld">Old</option>
-            <option id="orderLastEdit">Last Edit</option>
-            <option id="orderAlphabeticalAZ">A-Z</option>
-        </select>
         <div class="noteList" id="noteList">
-            <a class="asideNoteInline newNote" id="newNote">
-                <h3 class="newNoteTitle">New Note (+) </h3>
-            </a>
+            <div>
+                <a class="asideNoteInline newNote" id="newNote">
+                    <h3 class="newNoteTitle">New Note (+) </h3>
+                </a>
+                <select name="listOrder" id="listOrder">
+                    <option id="orderNew">New</option>
+                    <option id="orderOld">Old</option>
+                    <option id="orderLastEdit">Last Edit</option>
+                    <option id="orderAlphabeticalAZ">A-Z</option>
+                </select>
+            </div>
         </div>
         <input type="button" id="logOff" name="logOff" value="Logoff" onclick="logOff()">
-
     </aside>
     <main>
-
         <div class="creationDateDiv dateContainer" id="creationDateDiv">
             <span class="timeText" id="timeText">Creation Date</span>
         </div>
@@ -45,12 +45,12 @@
         <div class="todaysDateDiv dateContainer" id="todaysDateDiv">
             <span class="timeText" id="timeText">Today's Date</span>
         </div>
-
         <div class="titleContainer" id="titleContainer">
         </div>
         <div class="textContainer" id="textContainer">
         </div>
         <input type="button" class="button" id="editButton" value="Edit">
+        <input type="button" class="button buttonDelete" id="saveDelete" value="Delete">
     </main>
     <script type="text/javascript" src="./js/note.js"></script>
     <script type="text/javascript" src="./js/creator.js"></script>

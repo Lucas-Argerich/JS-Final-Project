@@ -20,19 +20,20 @@
         <h1 id="h1">My Notes</h1>
     </header>
     <aside id="aside">
-        <select name="listOrder" id="listOrder">
-            <option id="orderNew">New</option>
-            <option id="orderOld">Old</option>
-            <option id="orderLastEdit">Last Edit</option>
-            <option id="orderAlphabeticalAZ">A-Z</option>
-        </select>
         <div class="noteList" id="noteList">
-            <a class="asideNoteInline newNote" id="newNote">
-                <h3 class="newNoteTitle">New Note (+) </h3>
-            </a>
+            <div>
+                <a class="asideNoteInline newNote" id="newNote">
+                    <h3 class="newNoteTitle">New Note (+) </h3>
+                </a>
+                <select name="listOrder" id="listOrder">
+                    <option id="orderNew">New</option>
+                    <option id="orderOld">Old</option>
+                    <option id="orderLastEdit">Last Edit</option>
+                    <option id="orderAlphabeticalAZ">A-Z</option>
+                </select>
+            </div>
         </div>
         <input type="button" id="logOff" name="logOff" value="Logoff" onclick="logOff()">
-
     </aside>
     <main class="mainEdit">
         <input type="text" class="titleContainer editTitleContainer" id="editTitleContainer" value="a">

@@ -145,22 +145,6 @@
     }
 
     a {
-        &:hover>.asideNoteTitle {
-            font-size: 1.07rem;
-
-            @media (min-width:768px) {
-                font-size: 1.22rem;
-            }
-
-            @media (min-width: 1024px) {
-                font-size: 0.87rem;
-            }
-
-            @media (min-width:1440px) {
-                font-size: 0.97rem;
-            }
-        }
-
         h3 {
             font-size: 1.1rem;
             font-weight: normal;

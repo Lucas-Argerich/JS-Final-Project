@@ -104,18 +104,6 @@
     .noteBody p {
       font-size: 1.2rem; } }
 
-.noteBody a:hover > .asideNoteTitle {
-  font-size: 1.07rem; }
-  @media (min-width: 768px) {
-    .noteBody a:hover > .asideNoteTitle {
-      font-size: 1.22rem; } }
-  @media (min-width: 1024px) {
-    .noteBody a:hover > .asideNoteTitle {
-      font-size: 0.87rem; } }
-  @media (min-width: 1440px) {
-    .noteBody a:hover > .asideNoteTitle {
-      font-size: 0.97rem; } }
-
 .noteBody a h3 {
   font-size: 1.1rem;
   font-weight: normal; }
@@ -206,13 +194,13 @@ html {
     border: 3px solid transparent;
     background-clip: content-box; }
 
-.noteBody::-webkit-scrollbar {
+.noteBody .textContainer::-webkit-scrollbar {
   width: 10px;
-  background: #f5f5f5; }
-  .noteBody::-webkit-scrollbar-thumb {
+  background: transparent; }
+  .noteBody .textContainer::-webkit-scrollbar-thumb {
     position: fixed;
     background-color: #14213D;
-    border-radius: 2px;
+    border-radius: 5px;
     border: 3px solid transparent;
     background-clip: content-box; }
 
@@ -323,6 +311,7 @@ html {
             transition: ease-in-out 150ms; }
 
 .noteBody {
+  height: 100vh;
   position: relative;
   min-height: 100vh;
   overflow: hidden; }
@@ -401,6 +390,13 @@ html {
       @media (min-width: 1024px) {
         .noteBody aside .noteList {
           height: calc(100% - 100px); } }
+      .noteBody aside .noteList div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 20px; }
+        .noteBody aside .noteList div .asideNoteInline {
+          padding-bottom: 0; }
       .noteBody aside .noteList .asideNoteInline {
         position: relative;
         display: flex;
@@ -408,6 +404,8 @@ html {
         padding-bottom: 15px;
         height: 35px;
         align-items: center; }
+        .noteBody aside .noteList .asideNoteInline :hover.asideNoteTitle::after {
+          width: 90%; }
         .noteBody aside .noteList .asideNoteInline h3 {
           display: inline-block;
           transition: ease-in-out 100ms;
@@ -424,7 +422,16 @@ html {
         .noteBody aside .noteList .asideNoteInline .asideNoteTitle {
           color: #FCA311;
           width: 100%;
-          overflow: hidden; }
+          overflow-x: clip; }
+          .noteBody aside .noteList .asideNoteInline .asideNoteTitle::after {
+            content: "";
+            width: 0;
+            height: 2px;
+            display: block;
+            background: #FCA311;
+            position: relative;
+            top: 2px;
+            transition: ease-in-out 300ms; }
         .noteBody aside .noteList .asideNoteInline .asideNoteDate {
           text-align: right;
           color: #f5f5f5;
@@ -495,7 +502,8 @@ html {
             display: inline;
             background: #000000;
             text-align: center;
-            padding: 5px 0; } }
+            padding: 5px 0;
+            border-radius: 0 0 3px 3px; } }
     @media (min-width: 768px) {
       .noteBody main .creationDateDiv {
         grid-column: 1/4; } }
@@ -528,13 +536,14 @@ html {
       grid-row: 2/3;
       background: #ffffff;
       border-radius: 3px;
-      filter: drop-shadow(0 0 4px #00000030); }
+      filter: drop-shadow(0 0 4px #00000030);
+      overflow-y: scroll; }
       @media (min-width: 768px) {
         .noteBody main .textContainer {
           grid-column: 1/9;
           grid-row: 3/4; } }
       .noteBody main .textContainer p {
-        padding: 5px 5px 50px; }
+        padding: 7px 12px 50px; }
     .noteBody main .button {
       grid-column: 1/3;
       grid-row: 3/4;
@@ -552,13 +561,21 @@ html {
       @media (min-width: 1024px) {
         .noteBody main .button {
           grid-column: 1/3; } }
+    .noteBody main .button.buttonDelete {
+      grid-column: 4/6; }
+      @media (min-width: 768px) {
+        .noteBody main .button.buttonDelete {
+          grid-column: 6/9; } }
+      @media (min-width: 1024px) {
+        .noteBody main .button.buttonDelete {
+          grid-column: 7/9; } }
 
 .noteBody .mainEdit .editTitleContainer {
   padding: 0 12px;
   outline: none; }
 
 .noteBody .mainEdit .editTextContainer {
-  padding: 5px 5px 50px;
+  padding: 7px 12px 50px;
   outline: none;
   resize: none; }
 
