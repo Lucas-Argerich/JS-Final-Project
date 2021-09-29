@@ -1,10 +1,10 @@
-if (localStorage.getItem("Notes") == null || localStorage.getItem("user") == null || sessionStorage.getItem("savedNote") == null) { 
-    window.location = "/"
+if (localStorage.getItem("Notes") == null || localStorage.getItem("user") == null || sessionStorage.getItem("savedNote") == null) {
+    window.location = "../"
 }
 
 //Header
 document.getElementById('h1').addEventListener("click", function () {
-    window.location = "/"
+    window.location = "../"
 })
 
 asideToggleCheckbox = document.getElementById('ToggleNav').addEventListener("click", function () {
@@ -42,7 +42,7 @@ function saveNote() {
 
 function logOff() {
     localStorage.removeItem("user")
-    window.location = "/"
+    window.location = "../"
 }
 
 
@@ -89,6 +89,11 @@ if (window.location.href.indexOf("note.html") != -1) {
 
     //Note Edit
     document.getElementById("editButton").addEventListener("click", function () { location = "edit.html" })
+
+    //Note Delete
+    document.getElementById("deleteButton").addEventListener("click", function () {
+        
+    })
 }
 
 if (window.location.href.indexOf("edit.html") != -1) {
