@@ -25,13 +25,15 @@ function validate() {
 
         //Note List Generator
         const userNotes = JSON.parse(localStorage.Notes).filter(note => note.authorId == JSON.parse(localStorage.user).id)
-
+        userNotes.sort((a, b) => {
+                return new Date(b.edited_at) - new Date(a.edited_at)
+        });
         if (userNotes.length == 0) {
             window.location = "note.html";
         } else {
             for (const note of userNotes) {
                 let link = document.createElement("li")
-                link.innerHTML = `<a href="note.html" class="noteLink" id="${note.id}"><h2 class="title"> ${note.title} </h2><span class="date"> ${note.created_at} </span></a>`
+                link.innerHTML = `<a href="note.html" class="noteLink" id="${note.id}"><h2 class="title"> ${note.title} </h2><span class="date"> ${("0" + new Date(note.created_at).getDate()).slice(-2)}/${("0" + (new Date(note.created_at).getMonth() + 1)).slice(-2)}/${new Date(note.created_at).getFullYear()}</span></a>`
                 let parent = document.getElementById("noteList")
                 parent.appendChild(link)
             }

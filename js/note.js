@@ -21,18 +21,22 @@ asideToggleCheckbox = document.getElementById('ToggleNav').addEventListener("cli
 
 //Aside
 const userNotes = JSON.parse(localStorage.Notes).filter(note => note.authorId == JSON.parse(localStorage.user).id)
+userNotes.sort((a, b) => {
+    return new Date(b.edited_at) - new Date(a.edited_at)
+})
+
 for (const note of userNotes) {
     let link = document.createElement('a')
     link.className = "asideNoteInline"
     link.id = note.id
-    link.innerHTML = `<h3 class="asideNoteTitle"> ${note.title} </h3><h3 class="asideNoteDate"> ${note.created_at.slice(0, 5)} </h3>`
+    link.innerHTML = `<h3 class="asideNoteTitle"> ${note.title} </h3><h3 class="asideNoteDate"> ${("0" + new Date(note.created_at).getDate()).slice(-2)}/${("0" + (new Date(note.created_at).getMonth() + 1)).slice(-2)}</h3>`
 
     let parent = document.getElementById("noteList")
     parent.appendChild(link)
 }
 
 noteListLength = document.getElementById("noteList").getElementsByTagName("a").length
-for (let i = 0; i < noteListLength; i++) {
+for (let i = 1; i < noteListLength; i++) {
     document.getElementsByClassName("asideNoteInline")[i].addEventListener("click", saveNote)
 }
 
@@ -81,13 +85,13 @@ if (window.location.href.indexOf("note.html") != -1) {
     //Creation Date
     let creationDate = document.createElement("span")
     creationDate.className = "bigDate"
-    creationDate.innerText = JSON.parse(sessionStorage.savedNote).created_at
+    creationDate.innerText = `${("0" + new Date(JSON.parse(sessionStorage.savedNote).created_at).getDate()).slice(-2)}/${("0" + (new Date(JSON.parse(sessionStorage.savedNote).created_at).getMonth() + 1)).slice(-2)}/${new Date(JSON.parse(sessionStorage.savedNote).created_at).getFullYear()}`
     document.getElementById("creationDateDiv").prepend(creationDate)
 
     //Last Edit Date
     let lastEditDate = document.createElement("span")
     lastEditDate.className = "bigDate"
-    lastEditDate.innerText = JSON.parse(sessionStorage.savedNote).edited_at
+    lastEditDate.innerText = `${("0" + new Date(JSON.parse(sessionStorage.savedNote).edited_at).getDate()).slice(-2)}/${("0" + (new Date(JSON.parse(sessionStorage.savedNote).edited_at).getMonth() + 1)).slice(-2)}/${new Date(JSON.parse(sessionStorage.savedNote).edited_at).getFullYear()}`
     document.getElementById("lastChangeDiv").prepend(lastEditDate)
 
     //Today's bigDate
@@ -130,7 +134,7 @@ if (window.location.href.indexOf("edit.html") != -1) {
         let editedContent = document.getElementById("editTextContainer").value
         noteSave.title = editedTitle
         noteSave.content = editedContent
-        noteSave.edited_at = `${("0" + new Date().getDate()).slice(-2)}/${("0" + (new Date().getMonth() + 1)).slice(-2)}/${new Date().getFullYear()}`
+        noteSave.edited_at = Date()
         sessionStorage.setItem("savedNote", JSON.stringify(noteSave))
 
         let noteList = JSON.parse(localStorage.Notes)
