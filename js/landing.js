@@ -6,43 +6,44 @@ if ((localStorage.getItem("user") !== null) && localStorage.user !== "") {
 }
 
 //FormSubmit
-document.getElementById("formId").addEventListener("submit", validate)
+$("#formId").on("submit", validate)
 
 //Login
 function validate() {
-    let email = document.getElementById("email");
-    let password = document.getElementById("password");
+    let email = $("#email");
+    let password = $("#password");
 
     const emailCheck = Users.find(
-        a => a.email == email.value
+        a => a.email == email.val()
     );
-    if (emailCheck != null && emailCheck.password == password.value) {
-        document.getElementById("login").style.display = "none";
-        document.getElementById("notes").style.display = "flex";
-        document.getElementById("logOff").style.display = "inherit";
+    if (emailCheck != null && emailCheck.password == password.val()) {
+        $("#login").css("display", "none");
+        $("#notes").css("display", "flex");
+        $("#logOff").css("display", "inherit");
 
         localStorage.setItem('user', JSON.stringify(emailCheck));
 
         //Note List Generator
         const userNotes = JSON.parse(localStorage.Notes).filter(note => note.authorId == JSON.parse(localStorage.user).id)
         userNotes.sort((a, b) => {
-                return new Date(b.edited_at) - new Date(a.edited_at)
+            return new Date(b.edited_at) - new Date(a.edited_at)
         });
         if (userNotes.length == 0) {
             window.location = "note.html";
         } else {
             for (const note of userNotes) {
-                let link = document.createElement("li")
-                link.innerHTML = `<a href="note.html" class="noteLink" id="${note.id}"><h2 class="title"> ${note.title} </h2><span class="date"> ${("0" + new Date(note.created_at).getDate()).slice(-2)}/${("0" + (new Date(note.created_at).getMonth() + 1)).slice(-2)}/${new Date(note.created_at).getFullYear()}</span></a>`
-                let parent = document.getElementById("noteList")
-                parent.appendChild(link)
+                $("#noteList").append(`
+                <li>
+                    <a href="note.html" class="noteLink" id="${note.id}">
+                        <h2 class="title">${note.title}</h2>
+                        <span class="date"> ${("0" + new Date(note.created_at).getDate()).slice(-2)}/${("0" + (new Date(note.created_at).getMonth() + 1)).slice(-2)}/${new Date(note.created_at).getFullYear()}</span>
+                    </a>
+                </li>
+                `)
             }
         }
     } else {
-        let retry = document.createElement("p")
-        retry.innerText = "Wrong Email or Password, please try again."
-        let parent = document.getElementById("formContainer")
-        parent.appendChild(retry)
+        $("#formContainer").append("<p>Wrong Email or Password, please try again.</p>")
     }
 }
 
@@ -54,9 +55,9 @@ function logOff() {
 }
 
 //LoadNote
-noteListLength = document.getElementById("noteList").getElementsByTagName("li").length
+noteListLength = $("#noteList, li").length
 for (let i = 0; i < noteListLength; i++) {
-    document.getElementsByClassName("noteLink")[i].addEventListener("click", saveNote)
+    $(".noteLink", [i]).on("click", saveNote)
 }
 
 function saveNote() {

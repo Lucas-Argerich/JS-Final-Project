@@ -7,15 +7,15 @@ if (sessionStorage.getItem("savedNote") == null) {
 }
 
 //Header
-document.getElementById('h1').addEventListener("click", function () {
+$("#h1").on("click", function () {
     window.location = "index.html"
 })
 
-asideToggleCheckbox = document.getElementById('ToggleNav').addEventListener("click", function () {
+asideToggleCheckbox = $("#ToggleNav").on("click", function () {
     if (this.checked) {
-        document.getElementById('aside').style.display = "flex"
+        $("#aside").css("display", "flex")
     } else {
-        document.getElementById('aside').style.display = "none"
+        $("#aside").css("display", "none")
     }
 })
 
@@ -26,19 +26,16 @@ userNotes.sort((a, b) => {
 })
 
 for (const note of userNotes) {
-    let link = document.createElement('a')
-    link.className = "asideNoteInline"
-    link.id = note.id
-    link.innerHTML = `<h3 class="asideNoteTitle"> ${note.title} </h3><h3 class="asideNoteDate"> ${("0" + new Date(note.created_at).getDate()).slice(-2)}/${("0" + (new Date(note.created_at).getMonth() + 1)).slice(-2)}</h3>`
-
-    let parent = document.getElementById("noteList")
-    parent.appendChild(link)
+    $("#noteList").append(`
+        <a class="asideNoteInline noteInlineAnchor" id="${note.id}">
+            <h3 class="asideNoteTitle">${note.title}</h3><h3 class="asideNoteDate">${("0" + new Date(note.created_at).getDate()).slice(-2)}/${("0" + (new Date(note.created_at).getMonth() + 1)).slice(-2)}</h3>
+        </a>
+    `)
 }
 
-noteListLength = document.getElementById("noteList").getElementsByTagName("a").length
-for (let i = 1; i < noteListLength; i++) {
-    document.getElementsByClassName("asideNoteInline")[i].addEventListener("click", saveNote)
-}
+$.each($(".noteInlineAnchor"), function () {
+    $(this).on("click", saveNote)
+})
 
 function saveNote() {
     const noteSearchById = JSON.parse(localStorage.Notes).find(
@@ -69,44 +66,31 @@ if (JSON.parse(sessionStorage.savedNote).title != "") {
 } else {
     title.innerText = `My Notes`
 }
-document.head.appendChild(title)
+document.head.append(title)
 
 if (window.location.href.indexOf("note.html") != -1) {
     //Title
-    let noteTitle = document.createElement("h2")
-    noteTitle.innerText = JSON.parse(sessionStorage.savedNote).title
-    document.getElementById("titleContainer").appendChild(noteTitle)
+    $("#titleContainer").append(`<h2>${JSON.parse(sessionStorage.savedNote).title}</h2>`)
 
     //Content
-    let noteContent = document.createElement("p")
-    noteContent.innerText = JSON.parse(sessionStorage.savedNote).content
-    document.getElementById("textContainer").appendChild(noteContent)
+    $("#textContainer").append(`<p>${JSON.parse(sessionStorage.savedNote).content}</p>`)
 
     //Creation Date
-    let creationDate = document.createElement("span")
-    creationDate.className = "bigDate"
-    creationDate.innerText = `${("0" + new Date(JSON.parse(sessionStorage.savedNote).created_at).getDate()).slice(-2)}/${("0" + (new Date(JSON.parse(sessionStorage.savedNote).created_at).getMonth() + 1)).slice(-2)}/${new Date(JSON.parse(sessionStorage.savedNote).created_at).getFullYear()}`
-    document.getElementById("creationDateDiv").prepend(creationDate)
+    $("#creationDateDiv").prepend(`<span class="bigDate">${("0" + new Date(JSON.parse(sessionStorage.savedNote).created_at).getDate()).slice(-2)}/${("0" + (new Date(JSON.parse(sessionStorage.savedNote).created_at).getMonth() + 1)).slice(-2)}/${new Date(JSON.parse(sessionStorage.savedNote).created_at).getFullYear()}</span>`)
 
     //Last Edit Date
-    let lastEditDate = document.createElement("span")
-    lastEditDate.className = "bigDate"
-    lastEditDate.innerText = `${("0" + new Date(JSON.parse(sessionStorage.savedNote).edited_at).getDate()).slice(-2)}/${("0" + (new Date(JSON.parse(sessionStorage.savedNote).edited_at).getMonth() + 1)).slice(-2)}/${new Date(JSON.parse(sessionStorage.savedNote).edited_at).getFullYear()}`
-    document.getElementById("lastChangeDiv").prepend(lastEditDate)
+    $("#lastChangeDiv").prepend(`<span class="bigDate">${("0" + new Date(JSON.parse(sessionStorage.savedNote).edited_at).getDate()).slice(-2)}/${("0" + (new Date(JSON.parse(sessionStorage.savedNote).edited_at).getMonth() + 1)).slice(-2)}/${new Date(JSON.parse(sessionStorage.savedNote).edited_at).getFullYear()}</span>`)
 
     //Today's bigDate
-    let todaysDate = document.createElement("span")
-    todaysDate.className = "bigDate"
-    todaysDate.innerText = `${("0" + new Date().getDate()).slice(-2)}/${("0" + (new Date().getMonth() + 1)).slice(-2)}`
-    document.getElementById("todaysDateDiv").prepend(todaysDate)
+    $("#todaysDateDiv").prepend(`<span class="bigDate">${("0" + new Date().getDate()).slice(-2)}/${("0" + (new Date().getMonth() + 1)).slice(-2)}</span>`)
 
     //Note Edit
-    document.getElementById("editButton").addEventListener("click", function () {
+    $("#editButton").on("click", function () {
         location = "edit.html"
     })
 
     //Note Delete
-    document.getElementById("deleteButton").addEventListener("click", function () {
+    $("#deleteButton").on("click", function () {
         notesWithoutDeleted = JSON.parse(localStorage.Notes).filter(note => note.id != JSON.parse(sessionStorage.savedNote).id)
         localStorage.Notes = JSON.stringify(notesWithoutDeleted)
         newNoteCreator()
@@ -115,25 +99,21 @@ if (window.location.href.indexOf("note.html") != -1) {
 
 if (window.location.href.indexOf("edit.html") != -1) {
     //Title
-    let editTitle = document.getElementById("editTitleContainer")
-    editTitle.value = JSON.parse(sessionStorage.savedNote).title
+    $("#editTitleContainer").val(JSON.parse(sessionStorage.savedNote).title)
 
     //Content
-    let editContent = document.getElementById("editTextContainer")
-    editContent.value = JSON.parse(sessionStorage.savedNote).content
+    $("#editTextContainer").val(JSON.parse(sessionStorage.savedNote).content)
 
     //Edit Cancel
-    let editCancel = document.getElementById("cancelButton")
-    editCancel.addEventListener("click", function () { window.location = "note.html" })
+    $("#cancelButton").on("click", function () {
+        window.location = "note.html"
+    })
 
     //Edit Save
-    let editSave = document.getElementById("saveButton")
-    editSave.addEventListener("click", function () {
+    $("#saveButton").on("click", function () {
         let noteSave = JSON.parse(sessionStorage.savedNote)
-        let editedTitle = document.getElementById("editTitleContainer").value
-        let editedContent = document.getElementById("editTextContainer").value
-        noteSave.title = editedTitle
-        noteSave.content = editedContent
+        noteSave.title = $("#editTitleContainer").val()
+        noteSave.content = $("#editTextContainer").val()
         noteSave.edited_at = Date()
         sessionStorage.setItem("savedNote", JSON.stringify(noteSave))
 
@@ -148,4 +128,12 @@ if (window.location.href.indexOf("edit.html") != -1) {
         }
         window.location = "note.html"
     })
+}
+
+if (userNotes.length == 0) {
+    if(window.location.href.indexOf("note.html") == -1) {
+        window.location = "note.html"
+    }
+    $("#creationDateDiv, #lastChangeDiv, #todaysDateDiv, #titleContainer, #textContainer, #editButton, #deleteButton").css("display", "none")
+    $("main").append(`<p class="noNotes">YOUR NOTES HAVE BEEN EMPTY FOR xx HOURS 😢</p>`)
 }

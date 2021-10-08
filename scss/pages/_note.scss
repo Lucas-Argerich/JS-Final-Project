@@ -312,6 +312,7 @@
 
             p {
                 padding: 7px 12px 50px;
+                white-space: pre-wrap;
             }
         }
 
@@ -347,6 +348,17 @@
             @media (min-width:1024px) {
                 grid-column: 7/9;
             }
+        }
+    }
+
+    .noNotes {
+        grid-column: 1/6;
+        grid-row: 2/3;
+        text-align: center;
+        
+        @media (min-width:768px) {
+            grid-column: 1/9;
+            grid-row: 3/4;
         }
     }
 }

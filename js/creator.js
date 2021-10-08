@@ -1,4 +1,4 @@
-let newNoteButton = document.getElementById("newNote").addEventListener("click", newNoteCreator)
+$("#newNote").on("click", newNoteCreator)
 
 function newNoteCreator() {
   let newNote = {}
