@@ -18,7 +18,7 @@
 
 .landingBody h2.name {
   font-size: 2.5rem; }
-  @media (min-width: 426px) {
+  @media (min-width: 1440px) {
     .landingBody h2.name {
       font-size: 3rem; } }
 
@@ -27,12 +27,12 @@
   color: #000000; }
   .landingBody input::placeholder {
     font-size: 1.25rem;
-    color: #000000; }
+    color: #444; }
   @media (min-width: 426px) {
     .landingBody input {
-      font-size: 1.75rem; }
+      font-size: 1.45rem; }
       .landingBody input::placeholder {
-        font-size: 1.75rem; } }
+        font-size: 1.45rem; } }
 
 .landingBody p {
   color: #FCA311; }
@@ -182,9 +182,11 @@
       font-size: 1.2rem; } }
 
 .noteBody .noNotes {
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: bold;
   color: #14213D; }
+  .noteBody .noNotes #hoursWithoutNotes {
+    color: #FCA311; }
 
 html {
   overflow-y: scroll; }
@@ -262,38 +264,50 @@ html {
     .landingBody .content .name {
       justify-self: flex-start;
       color: #ffffff;
-      text-align: center; }
+      text-align: center;
+      margin: 30px 0 10px; }
     .landingBody .content #formContainer {
-      padding-bottom: 150px; }
-      .landingBody .content #formContainer #formId input {
-        width: 310px;
-        margin-bottom: 20px;
-        height: 50px;
-        border-radius: 10px;
-        text-align: center;
-        text-align: center;
-        position: relative;
-        display: flex; }
-        .landingBody .content #formContainer #formId input#submit {
-          display: none; }
-        .landingBody .content #formContainer #formId input::placeholder {
+      padding-bottom: 95px; }
+      @media (min-width: 1440px) {
+        .landingBody .content #formContainer {
+          padding-bottom: 150px; } }
+      .landingBody .content #formContainer #formId {
+        position: relative; }
+        .landingBody .content #formContainer #formId input {
+          width: 310px;
+          margin-bottom: 20px;
+          height: 50px;
+          border-radius: 10px;
           text-align: center;
-          position: relative; }
-        .landingBody .content #formContainer #formId input:focus {
-          outline: none; }
-          .landingBody .content #formContainer #formId input:focus::placeholder {
-            color: #00000000; }
-        @media (min-width: 426px) {
-          .landingBody .content #formContainer #formId input {
-            width: 500px;
-            height: 60px; } }
-      .landingBody .content #formContainer p {
+          text-align: center;
+          position: relative;
+          display: flex; }
+          .landingBody .content #formContainer #formId input#submit {
+            display: none; }
+          .landingBody .content #formContainer #formId input::placeholder {
+            text-align: center;
+            position: relative; }
+          .landingBody .content #formContainer #formId input:focus {
+            outline: none; }
+            .landingBody .content #formContainer #formId input:focus::placeholder {
+              color: #00000000; }
+          @media (min-width: 426px) {
+            .landingBody .content #formContainer #formId input {
+              width: 500px;
+              height: 60px; } }
+        .landingBody .content #formContainer #formId p {
+          text-align: center;
+          position: absolute;
+          width: 310px;
+          bottom: -26px; }
+          @media (min-width: 426px) {
+            .landingBody .content #formContainer #formId p {
+              width: 500px; } }
+      .landingBody .content #formContainer h3 {
         text-align: center;
-        position: absolute;
-        width: 310px; }
-        @media (min-width: 426px) {
-          .landingBody .content #formContainer p {
-            width: 500px; } }
+        color: #ffffff;
+        margin-top: 50px;
+        cursor: pointer; }
     .landingBody .content ul {
       margin-top: 80px;
       width: 80vw;
@@ -342,6 +356,8 @@ html {
       text-align: center;
       margin: auto;
       cursor: pointer; }
+      .noteBody header h1::after {
+        cursor: default; }
     @media (min-width: 1024px) {
       .noteBody header {
         width: 100%;
@@ -471,6 +487,9 @@ html {
     @media (min-width: 1024px) {
       .noteBody main {
         grid-area: main;
+        padding: 20px 150px; } }
+    @media (min-width: 1440px) {
+      .noteBody main {
         padding: 20px 100px; } }
     .noteBody main .dateContainer {
       display: none; }
@@ -578,11 +597,19 @@ html {
   .noteBody .noNotes {
     grid-column: 1/6;
     grid-row: 2/3;
-    text-align: center; }
+    text-align: center;
+    height: min-content;
+    align-self: center; }
     @media (min-width: 768px) {
       .noteBody .noNotes {
         grid-column: 1/9;
         grid-row: 3/4; } }
+    .noteBody .noNotes #hoursWithoutNotes {
+      background: #14213D;
+      padding: 5px;
+      display: inline-block;
+      margin: 15px 5px;
+      border-radius: 5px; }
 
 .noteBody .mainEdit .editTitleContainer {
   padding: 0 12px;
