@@ -2,10 +2,6 @@ if (localStorage.getItem("Notes") == null || localStorage.getItem("user") == nul
     window.location = "index.html"
 }
 
-if (sessionStorage.getItem("savedNote") == null) {
-    newNoteCreator()
-}
-
 //Header
 $("#h1").on("click", function () {
     window.location = "index.html"
@@ -59,16 +55,59 @@ function edit() {
 
 //NOTE LOADER
 
+if (userNotes.length == 0 && sessionStorage.getItem("savedNote") == null) {
+    if (window.location.href.indexOf("note.html") == -1) {
+        window.location = "note.html"
+    }
+
+    if (localStorage.getItem("noNotesStartDate") == null) {
+        let dateStart = Date.now()
+        localStorage.setItem("noNotesStartDate", dateStart)
+    }
+
+    let counterCalc
+    update()
+    $("main").append(`<p class="noNotes"></p>`)
+    function update() {
+        counterCalc = (Date.now() - localStorage.noNotesStartDate) / 1000
+        loadCounter()
+    }
+
+    function loadCounter() {
+        let counterHours = Math.floor(counterCalc / 3600) % 24
+
+        if (counterHours.toString().length < 2) {
+            counterHours = ("0" + counterHours).slice(-2)
+        }
+
+        let counterMinutes = ("0" + Math.floor(counterCalc / 60) % 60).slice(-2)
+        let counterSeconds = ("0" + Math.floor(counterCalc) % 60).slice(-2)
+        $("#creationDateDiv, #lastChangeDiv, #todaysDateDiv, #titleContainer, #textContainer, #editButton, #deleteButton").css("display", "none")
+        $("main .noNotes").html(`YOUR NOTES HAVE BEEN EMPTY FOR <br><span id="hoursWithoutNotes">${counterHours.toString()}</span>:<span id="hoursWithoutNotes">${counterMinutes.toString()}</span>:<span id="hoursWithoutNotes">${counterSeconds.toString()}</span><br>😢`)
+    }
+    setInterval(update, 1000)   
+
+} else {
+
+    localStorage.removeItem("noNotesStartDate")
+    $("#creationDateDiv, #lastChangeDiv, #todaysDateDiv, #titleContainer, #textContainer, #editButton, #deleteButton").css("display", "")
+    $("main").remove(".noNotes")
+}
+
+if (userNotes.length != 0 && sessionStorage.getItem("savedNote") == null) {
+    newNoteCreator()
+}
+
 //Head Title
 let title = document.createElement("title")
-if (JSON.parse(sessionStorage.savedNote).title != "") {
+if (sessionStorage.getItem("savedNote") != null && JSON.parse(sessionStorage.savedNote).title != "") {
     title.innerText = `${JSON.parse(sessionStorage.savedNote).title} | My Notes`
 } else {
     title.innerText = `My Notes`
 }
 document.head.append(title)
 
-if (window.location.href.indexOf("note.html") != -1) {
+if (sessionStorage.getItem("savedNote") != null && window.location.href.indexOf("note.html") != -1) {
     //Title
     $("#titleContainer").append(`<h2>${JSON.parse(sessionStorage.savedNote).title}</h2>`)
 
@@ -93,7 +132,8 @@ if (window.location.href.indexOf("note.html") != -1) {
     $("#deleteButton").on("click", function () {
         notesWithoutDeleted = JSON.parse(localStorage.Notes).filter(note => note.id != JSON.parse(sessionStorage.savedNote).id)
         localStorage.Notes = JSON.stringify(notesWithoutDeleted)
-        newNoteCreator()
+        sessionStorage.removeItem("savedNote")
+        window.location = "index.html"
     })
 }
 
@@ -111,29 +151,26 @@ if (window.location.href.indexOf("edit.html") != -1) {
 
     //Edit Save
     $("#saveButton").on("click", function () {
-        let noteSave = JSON.parse(sessionStorage.savedNote)
-        noteSave.title = $("#editTitleContainer").val()
-        noteSave.content = $("#editTextContainer").val()
-        noteSave.edited_at = Date()
-        sessionStorage.setItem("savedNote", JSON.stringify(noteSave))
+        if ($("#editTextContainer").val() !== "" || $("#editTitleContainer").val() != "Unnamed Note") {
+            let noteSave = JSON.parse(sessionStorage.savedNote)
+            noteSave.title = $("#editTitleContainer").val()
+            noteSave.content = $("#editTextContainer").val()
+            noteSave.edited_at = Date()
+            sessionStorage.setItem("savedNote", JSON.stringify(noteSave))
 
-        let noteList = JSON.parse(localStorage.Notes)
-        const noteToEdit = JSON.parse(localStorage.Notes).findIndex(element => element.id == noteSave.id)
-        if (noteToEdit != -1) {
-            noteList[noteToEdit] = noteSave
-            localStorage.setItem("Notes", JSON.stringify(noteList))
-        } else {
-            noteList.push(noteSave)
-            localStorage.setItem("Notes", JSON.stringify(noteList))
+            let noteList = JSON.parse(localStorage.Notes)
+            const noteToEdit = JSON.parse(localStorage.Notes).findIndex(element => element.id == noteSave.id)
+            if (noteToEdit != -1) {
+                noteList[noteToEdit] = noteSave
+                localStorage.setItem("Notes", JSON.stringify(noteList))
+            } else {
+                noteList.push(noteSave)
+                localStorage.setItem("Notes", JSON.stringify(noteList))
+            }
+        }else{
+            sessionStorage.removeItem("savedNote")
         }
         window.location = "note.html"
-    })
-}
 
-if (userNotes.length == 0) {
-    if(window.location.href.indexOf("note.html") == -1) {
-        window.location = "note.html"
-    }
-    $("#creationDateDiv, #lastChangeDiv, #todaysDateDiv, #titleContainer, #textContainer, #editButton, #deleteButton").css("display", "none")
-    $("main").append(`<p class="noNotes">YOUR NOTES HAVE BEEN EMPTY FOR xx HOURS 😢</p>`)
+    })
 }

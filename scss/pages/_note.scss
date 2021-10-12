@@ -33,6 +33,10 @@
             text-align: center;
             margin: auto;
             cursor: pointer;
+
+            &::after {
+                cursor: default;
+            }
         }
 
         @media (min-width: 1024px) {
@@ -206,6 +210,10 @@
 
         @media (min-width:1024px) {
             grid-area: main;
+            padding: 20px 150px;
+        }
+
+        @media (min-width:1440px) {
             padding: 20px 100px;
         }
 
@@ -355,10 +363,21 @@
         grid-column: 1/6;
         grid-row: 2/3;
         text-align: center;
-        
+        height: min-content;
+        align-self: center;
+
         @media (min-width:768px) {
             grid-column: 1/9;
             grid-row: 3/4;
         }
+
+        #hoursWithoutNotes {
+            background: $blue;
+            padding: 5px;
+            display: inline-block;
+            margin: 15px 5px;
+            border-radius: 5px;
+        }
+
     }
 }

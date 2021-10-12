@@ -6,12 +6,7 @@ const Users = [
         email: "lucasargerichcoder@gmail.com",
         password: "12345678"
     },
-    {
-        id: 1,
-        firstName: "Lucas",
-        lastName: "Argerich",
-        email: "lucasargerich@gmail.com",
-        password: "12345678"
-    }
 ]
-
+if (localStorage.getItem("Users") == null) {
+    localStorage.setItem("Users",JSON.stringify(Users))
+}

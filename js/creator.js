@@ -3,7 +3,7 @@ $("#newNote").on("click", newNoteCreator)
 function newNoteCreator() {
   let newNote = {}
   newNote.id = Math.random().toString(36).substr(2, 9)
-  newNote.title = ""
+  newNote.title = "Unnamed Note"
   newNote.content = ""
   newNote.created_at = Date()
   newNote.edited_at = Date()
